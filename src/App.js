@@ -1,5 +1,7 @@
 
 import './App.css';
+import {addTodo} from './Component/reducers';
+import {useSelector} from 'react-redux';
 
 function App() {
 

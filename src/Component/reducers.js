@@ -9,7 +9,6 @@ export const Todoslices = createSlice({
     name:'todo',
     initial_state,
     reducers: {
-        // id: Date.now(),
         addTodo: (state, action)=>{  
             state.content.push(action.payload)
         }
@@ -17,7 +16,7 @@ export const Todoslices = createSlice({
 });
 
 //reducer
-const Reducer = Todoslices.reducer
+const Reducer = Todoslices.reducer;
 export default Reducer;
 
 //action
