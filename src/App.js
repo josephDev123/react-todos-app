@@ -47,19 +47,23 @@ const onHandleText =(e)=>{
           </form>
 
           <ul className="list-group">
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              A list item
-
-              {
-                // determine what to show btw edit text and edit btn
-              (EditForm ==false)?
-              <span className="badge bg-primary rounded-pill" style={{cursor:'pointer'}} onClick={()=>setEditForm(true)}>Edit</span>:
-              <span className="badge rounded-pill">
-              <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo"/>
-          </span>
-              }
-              <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}}><i className="fa fa-trash"></i></span>
-            </li>
+            {list.map(list=>
+                 <li id={list.id} key={list.id} className="list-group-item d-flex justify-content-between align-items-center">
+                 {list.text}
+   
+                 {
+                   // determine what to show btw edit text and edit btn
+                 (EditForm ==false)?
+                 <span className="badge bg-primary rounded-pill" style={{cursor:'pointer'}} onClick={()=>setEditForm(true)}>Edit</span>:
+                 <span className="badge rounded-pill">
+                 <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo"/>
+             </span>
+                 }
+                 <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}}><i className="fa fa-trash"></i></span>
+               </li>
+              
+              )}
+         
             
           </ul>
 
