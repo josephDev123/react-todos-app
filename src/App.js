@@ -1,6 +1,6 @@
 
 import './App.css';
-import {addTodo} from './Component/reducers';
+import {addTodo, onDeleteId} from './Component/reducers';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useState } from 'react';
@@ -8,11 +8,11 @@ import { useState } from 'react';
 
 function App() {
   const action = useDispatch();
- 
+  const list =useSelector(state => state.todo);
   // state
 const [EditForm, setEditForm] =useState(false);
 const [text, setText] =useState('');
-
+//handle oninput 
 const onHandleText =(e)=>{
   setText(e.target.value)
 }
@@ -20,7 +20,7 @@ const onHandleText =(e)=>{
   const handleSubmit =(e)=>{
     e.preventDefault();
     const content_el =document.getElementById('content');
-    if(text ==''){
+    if(text ===''){
       console.log('Content field is empty');
     }else{
       action(addTodo({
@@ -31,9 +31,13 @@ const onHandleText =(e)=>{
     } 
   }
 
-  const list =useSelector(state => state.todo);
-  console.log(list);
-  
+  //handle delete by id or handle of each item
+  const handleDelete = (e)=>{
+    const delete_id = e.target.parentElement.parentElement.id;
+    action(onDeleteId({id:delete_id}))
+  }
+
+ 
   return (
     <div className="container">
       <div className='row justify-content-center text-center'>
@@ -53,13 +57,13 @@ const onHandleText =(e)=>{
    
                  {
                    // determine what to show btw edit text and edit btn
-                 (EditForm ==false)?
+                 (EditForm ===false)?
                  <span className="badge bg-primary rounded-pill" style={{cursor:'pointer'}} onClick={()=>setEditForm(true)}>Edit</span>:
                  <span className="badge rounded-pill">
                  <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo"/>
              </span>
                  }
-                 <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}}><i className="fa fa-trash"></i></span>
+                 <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}} onClick={handleDelete}><i className="fa fa-trash"></i></span>
                </li>
               
               )}

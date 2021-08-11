@@ -8,9 +8,17 @@ export const Todoslices = createSlice({
     name:'todo',
     initialState:initial_state,
     reducers: {
+
         addTodo: (state, action)=>{  
             state.push(action.payload)
+        },
+
+        onDeleteId:(state, action)=>{
+            const{id} = action.payload;
+            // state.filter(item=> item.id !== id)
         }
+
+
     }
 });
 
@@ -19,4 +27,4 @@ const Reducer = Todoslices.reducer;
 export default Reducer;
 
 //action
-export let {addTodo} = Todoslices.actions;
+export let {addTodo, onDeleteId} = Todoslices.actions;
