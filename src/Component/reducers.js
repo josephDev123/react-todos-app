@@ -1,8 +1,9 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-// {id:123, text:'hello', completed: false}
+
 let initial_state =[]
 
+//[{id:123, text:'hello'}, {id:123, text:'hello'}]
 
 export const Todoslices = createSlice({
     name:'todo',
@@ -14,12 +15,14 @@ export const Todoslices = createSlice({
         },
 
         onDeleteId:(state, action)=>{
-            const{id} = action.payload;
-            // state.filter(item=> item.id !== id)
-        }
-
+            const{id} = action.payload
+         const indexitem = state.map(item=>item.id ===id);
+        //  const indexitem = state.map(item=>(item.id =id)?item:'');//correct
+         const index= state.indexOf(indexitem);
+         state.splice(index, 1);
 
     }
+}
 });
 
 //reducer
