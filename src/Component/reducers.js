@@ -16,7 +16,7 @@ export const Todoslices = createSlice({
 
         onDeleteId:(state, action)=>{
             const{id} = action.payload
-         const indexitem = state.map(item=>item.id ===id);
+         const indexitem = state.forEach(item=>item.id ===id?item:'');
         //  const indexitem = state.map(item=>(item.id =id)?item:'');//correct
          const index= state.indexOf(indexitem);
          state.splice(index, 1);

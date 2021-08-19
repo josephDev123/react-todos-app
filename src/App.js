@@ -34,6 +34,7 @@ const onHandleText =(e)=>{
   //handle delete by id or handle of each item
   const handleDelete = (e)=>{
     const delete_id = e.target.parentElement.parentElement.id;
+    console.log(delete_id);
     action(onDeleteId({id:delete_id}))
   }
 
