@@ -16,11 +16,14 @@ export const Todoslices = createSlice({
 
         onDeleteId:(state, action)=>{
             const{id} = action.payload
-         const indexitem = state.forEach(item=>item.id ===id?item:'');
-        //  const indexitem = state.map(item=>(item.id =id)?item:'');//correct
-         const index= state.indexOf(indexitem);
-         state.splice(index, 1);
+            let newState = state.findIndex(item=>  item.id === id);
+            // state.splice(0, state.length)
+         state.splice(newState,1);
+    },
 
+    editTodo:(state, action)=>{
+        // let {id, text} = action.payload;
+       
     }
 }
 });
@@ -30,4 +33,4 @@ const Reducer = Todoslices.reducer;
 export default Reducer;
 
 //action
-export let {addTodo, onDeleteId} = Todoslices.actions;
+export let {addTodo, onDeleteId, editTodo} = Todoslices.actions;

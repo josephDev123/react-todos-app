@@ -1,6 +1,6 @@
 
 import './App.css';
-import {addTodo, onDeleteId} from './Component/reducers';
+import {addTodo, onDeleteId, editTodo} from './Component/reducers';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useState } from 'react';
@@ -38,6 +38,17 @@ const onHandleText =(e)=>{
     action(onDeleteId({id:delete_id}))
   }
 
+  //edit todos
+  const handleEdit=(e)=>{
+    const editpostId = e.target.parentElement.parentElement.id;
+    const editText = e.target.value;
+    // console.log(editText);
+    action(editTodo({
+      id:editpostId,
+      text:editText
+    }))
+
+  }
  
   return (
     <div className="container">
@@ -61,10 +72,10 @@ const onHandleText =(e)=>{
                  (EditForm ===false)?
                  <span className="badge bg-primary rounded-pill" style={{cursor:'pointer'}} onClick={()=>setEditForm(true)}>Edit</span>:
                  <span className="badge rounded-pill">
-                 <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo"/>
+                 <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo" onInput={handleEdit}/>
              </span>
                  }
-                 <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}} onClick={handleDelete}><i className="fa fa-trash"></i></span>
+                 <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}} ><i className="fa fa-trash" onClick={handleDelete}></i></span>
                </li>
               
               )}
