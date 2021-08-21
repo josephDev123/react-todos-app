@@ -16,9 +16,8 @@ export const Todoslices = createSlice({
 
         onDeleteId:(state, action)=>{
             const{id} = action.payload
-            let newState = state.findIndex(item=>  item.id === id);
-            // state.splice(0, state.length)
-         state.splice(newState,1);
+            let newState = state.filter(item=>  item.id === id);
+            state.splice(newState,1);
     },
 
     editTodo:(state, action)=>{
