@@ -15,12 +15,10 @@ export const Todoslices = createSlice({
         },
 
         onDeleteId:(state, action)=>{
-            const{id} = action.payload
-            let newState = state.filter(item=>  item.id === id);
-            state.splice(newState,1);
+            return state.filter(({id})=>id !== +action.payload);            
     },
 
-    editTodo:(state, action)=>{
+    editTodo:(state, {payload})=>{
         // let {id, text} = action.payload;
        
     }

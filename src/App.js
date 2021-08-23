@@ -35,7 +35,7 @@ const onHandleText =(e)=>{
   const handleDelete = (e)=>{
     const delete_id = e.target.parentElement.parentElement.id;
     console.log(delete_id);
-    action(onDeleteId({id:delete_id}))
+    action(onDeleteId(delete_id))
   }
 
   //edit todos
