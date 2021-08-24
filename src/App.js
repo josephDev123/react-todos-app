@@ -42,12 +42,12 @@ const onHandleText =(e)=>{
   const handleEdit=(e)=>{
     const editpostId = e.target.parentElement.parentElement.id;
     const editText = e.target.value;
-    // console.log(editText);
+    // console.log(editText, editpostId);
     action(editTodo({
       id:editpostId,
       text:editText
     }))
-
+    
   }
  
   return (
@@ -72,7 +72,7 @@ const onHandleText =(e)=>{
                  (EditForm ===false)?
                  <span className="badge bg-primary rounded-pill" style={{cursor:'pointer'}} onClick={()=>setEditForm(true)}>Edit</span>:
                  <span className="badge rounded-pill">
-                 <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo" onInput={handleEdit}/>
+                 <input type="text" className="form-control form-control-sm" placeholder="Edit todo" aria-label="edit todo" aria-describedby="edit todo" onChange={handleEdit}/>
              </span>
                  }
                  <span className="badge bg-danger rounded-pill" style={{cursor:'pointer'}} ><i className="fa fa-trash" onClick={handleDelete}></i></span>
