@@ -1,18 +1,21 @@
 
 import { createSlice } from "@reduxjs/toolkit";
+import {loadState} from './LocalStorage';
 
-let initial_state =[]
-
+let persistedState = loadState();
+let initial_state = persistedState
+// let initial_state =[]
 //[{id:123, text:'hello'}, {id:123, text:'hello'}]
 
 export const Todoslices = createSlice({
     name:'todo',
-    initialState:initial_state,
+    initialState: initial_state,
     reducers: {
 //add item to todo array
         addTodo: (state, action)=>{  
             state.push(action.payload)
         },
+        
 //delete item in array by id
         onDeleteId:(state, action)=>{
             return state.filter(({id})=>id !== +action.payload);            
@@ -21,7 +24,6 @@ export const Todoslices = createSlice({
     //editing an item by id
     editTodo:(state, action)=>{
         let {id, text} = action.payload;
-        // console.log(id, text);
         return state.map(item=>item.id === +id? {...item, text:text}:item)
        
     }
