@@ -1,4 +1,3 @@
-import React from 'react'
 
 export  function saveState(state) {
         try{
