@@ -31,8 +31,8 @@ export const Todoslices = createSlice({
 });
 
 //reducer
-const Reducer = Todoslices.reducer;
-export default Reducer;
+export default Todoslices.reducer;
+// export default Reducer;
 
 //action
 export let {addTodo, onDeleteId, editTodo} = Todoslices.actions;
